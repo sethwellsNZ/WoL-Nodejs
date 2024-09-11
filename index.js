@@ -31,4 +31,3 @@ app.post('/broadcast-wol', (req, res) => {
 });
 
 app.listen(port, () => {console.log(`listening for post on http://localhost:${port}/`);})
-
