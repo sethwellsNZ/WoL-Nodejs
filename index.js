@@ -8,7 +8,8 @@ const app = express();
 const port = 5656;
 
 if (argv['_'][0] === undefined) {
-	console.log("Usage: WoL-Nodejs <MAC_ADDRESS> [-p PORT]\nStarts an Express server to send Wake-on-LAN packets. Send a POST request to http://localhost:<PORT>/broadcast-wol to wake the specified device. Default port is 3000.\nExample: WoL-Nodejs 00:11:22:33:44:55 -p 8080");
+	console.log("Usage: WoL-Nodejs <MAC_ADDRESS> [-p PORT | default 3000]\n\nStarts a Node Express server to send Wake-on-LAN packets.\nSend a POST request to http://localhost:<PORT>/broadcast-wol to wake the specified device.\n\nExample: WoL-Nodejs 00:11:22:33:44:55 -p 8080\n\n");
+	process.exit(1);
 } else {
 	console.log(argv['_']);
 }
