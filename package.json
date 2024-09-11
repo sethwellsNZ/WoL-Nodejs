@@ -2,7 +2,7 @@
   "name": "wol-nodejs",
   "version": "1.0.0",
   "description": "A barebones Node app designed to send a WoL packet to the network's broadcast address",
-  "main": "index.js",,
+  "main": "index.js",
   "author": "Seth Wells",
   "license": "MIT",
   "dependencies": {
