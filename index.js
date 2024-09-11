@@ -15,17 +15,17 @@ const port = argv['p'] === undefined ? 3000 : argv['p'];
 
 app.post('/broadcast-wol', (req, res) => {
 	try {
-		console.log('Execting WoL script');
-		exec(`wakeonlan ${argv[2]}'}`, (err, stdout, stderr) => {
+		console.log(`Post Received! Executing WoL scripts MAC=${argv['_'][0]}`);
+		exec(`wakeonlan ${argv['_'][0]}`, (err, stdout, stderr) => {
 			if (err) {
-				return err;
+				throw new Error(err);
 			}
 			console.log(stdout);
 			console.error(stderr);
 		});
 		res.status(200).json({ message: 'WoL broadcast succssful' });
 	} catch (err) {
-		console.error(`Error handling broadcast-WoL : ${err.message}`);
+		console.error(`Error handling broadcast-wol request : ${err.message}`);
 		res.status(500).json({ error: `Internal server error ${err.message}` });
 	}
 });
