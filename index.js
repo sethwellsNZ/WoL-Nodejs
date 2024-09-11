@@ -5,14 +5,13 @@ const bodyParser = require('body-parser');
 const argv = require('minimist')(process.argv.slice(2));
 
 const app = express();
-const port = 5656;
 
-if (argv['_'][0] === undefined) {
+if (argv['_'][0] === undefined || argv['h'] !== undefined || argv['help'] !== undefined) {
 	console.log("Usage: WoL-Nodejs <MAC_ADDRESS> [-p PORT | default 3000]\n\nStarts a Node Express server to send Wake-on-LAN packets.\nSend a POST request to http://localhost:<PORT>/broadcast-wol to wake the specified device.\n\nExample: WoL-Nodejs 00:11:22:33:44:55 -p 8080\n\n");
 	process.exit(1);
-} else {
-	console.log(argv['_']);
 }
+
+const port = argv['p'] === undefined ? 3000 : argv['p'];
 
 app.post('/broadcast-wol', (req, res) => {
 	try {
